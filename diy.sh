@@ -3,6 +3,24 @@
 # 简化日常服务器运维命令,在.bash_profile 或 .zshrc 文件中引用
 # 版权 2022 yukui
 
+
+#######################################
+# Show file pwd
+# Globals:
+#   pwdResult
+# Arguments:
+#   filename
+#######################################
+function pwdf(){
+
+  if [ -f "$1" ]; then
+    pwdResult=`pwd`
+    echo "${pwdResult}"/"$1"
+  else
+    eval "pwd"
+  fi
+}
+
 #######################################
 # Show process info,and kill process.
 # Globals:
@@ -18,6 +36,7 @@
 # Returns:
 #   None
 #######################################
+
 function pg() {
 
   if [ -z "$1" ]; then
@@ -71,3 +90,4 @@ function pg() {
     return
   fi
 }
+
